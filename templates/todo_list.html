@@ -1,0 +1,39 @@
+<div id="todo-list">
+{% if todos.is_empty() %}
+<div>
+    <h2>Currently no Todos defined</h2>
+</div>
+{% else %}
+<div>
+    <h2>Work on</h2>
+</div>
+
+    {% for todo in todos %}
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-row">
+
+        <div class="basis-11/12">
+            <p class="text-lg text-gray-900">
+                {{ todo.title|e }}
+            </p>
+
+            <textarea class="text-left text-gray-500 w-full" rows=3
+            >{{ todo.description|e }}</textarea>
+        </div>
+
+        <div class="basis-1/12 flex items-center justify-center">
+            <div class="flex flex-row-reverse space-x-4 space-x-reverse">
+                <button hx-get="/todo-edit-modal" hx-trigger="click" hx-target="#modal"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+                    <i class="fa-solid fa-edit"></i>
+                </button>
+                <button hx-delete="/todo-delete/{{todo.id}}" hx-trigger="click" hx-target="#todo-list" hx-swap="outerHTML"
+                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+<div id="modal"></div>
+</div>

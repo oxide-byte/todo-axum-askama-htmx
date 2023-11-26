@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/assets/htmx.min.js"></script>
+<link href="/assets/tailwind.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<head><title>TODO-ASKAMA-HTMX</title></head>
+<body>
+<div class="container mx-auto m-5 p-6">
+    <h1 class="mb-4 text-4xl font-extrabold text-center text-gray-600">TODO LIST</h1>
+
+    <div class="pb-5">
+        Create a Todo:
+        <button hx-get="/todo-create-modal" hx-trigger="click" hx-target="#modal"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mx-2">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <div id="todo-list" hx-get="/todos" hx-trigger="load" hx-swap="outerHTML">
+        <div id="modal"></div>
+    </div>
+
+</div>
+</body>
+</html>
