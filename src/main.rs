@@ -33,11 +33,11 @@ async fn main() {
         .route("/", get(index))
         .route("/todos", get(todo_list))
         .route("/todo-create-modal", get(todo_create_modal))
-        .route("/todo-edit-modal", get(todo_edit_modal))
+        .route("/todo-edit-modal/:id", get(todo_edit_modal))
         .route("/todo-cancel-modal", get(todo_cancel_modal))
         .route("/todo-create", post(todo_create))
         .route("/todo-edit", put(todo_edit))
-        .route("/todo-delete/{:id}", delete(todo_delete))
+        .route("/todo-delete/:id", delete(todo_delete))
         .nest_service("/assets", ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),)
         .with_state(shared_state);
 

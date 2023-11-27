@@ -1,2 +1,37 @@
+= TODO - AXUM - ASKAMA - HTMX
 
-https://djc.github.io/askama/askama.html
+== Introduction
+
+This is a simple Todo app, as POC for HTMX example based on Askama template engine and running on an Axum server. The Tower crates serves the static resources files like CSS, JS...
+
+The application contains the basic CRUD elements including the create/update handled by a modal window.
+
+As bonus, the POC uses Tailwind to prettify the application. You can use the standalone version of Tailwind or install NodeJs and NPM.
+
+== Tools & Links
+
+- https://www.rust-lang.org/ (nightly build)
+
+- https://djc.github.io/askama/askama.html
+
+- https://htmx.org/
+
+== Running application
+
+Start the Axum server and the page can be accessed by http://127.0.0.1:8080/
+
+[source,bash]
+----
+cargo run
+----
+
+Build with Docker
+
+[source,bash]
+----
+DOCKER_BUILDKIT=1 docker build .
+----
+
+== Conclusion
+
+The POC was a nice experience, but currently I have no real usecase to follow the HTMX Stack.

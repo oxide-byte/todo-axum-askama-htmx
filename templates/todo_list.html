@@ -22,7 +22,7 @@
 
         <div class="basis-1/12 flex items-center justify-center">
             <div class="flex flex-row-reverse space-x-4 space-x-reverse">
-                <button hx-get="/todo-edit-modal" hx-trigger="click" hx-target="#modal"
+                <button hx-get="/todo-edit-modal/{{todo.id}}" hx-trigger="click" hx-target="#modal"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2">
                     <i class="fa-solid fa-edit"></i>
                 </button>
