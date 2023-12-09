@@ -8,7 +8,7 @@ use axum::routing::{delete, get, post, put};
 use tower_http::services::ServeDir;
 use routes::*;
 use crate::models::{TodoList};
-
+use tokio::net::TcpListener;
 #[derive(Debug)]
 pub struct AppState {
     pub todos: TodoList
@@ -41,8 +41,9 @@ async fn main() {
         .nest_service("/assets", ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),)
         .with_state(shared_state);
 
-    axum::Server::bind(&"0.0.0.0:8080".parse().unwrap())
-        .serve(app.into_make_service())
+    let listener = TcpListener::bind("127.0.0.1:8080").await.unwrap();
+    println!("->> LISTENING on {:?}\n", listener.local_addr());
+    axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
 }
