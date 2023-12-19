@@ -34,4 +34,4 @@ DOCKER_BUILDKIT=1 docker build .
 
 == Conclusion
 
-The POC was a nice experience, but currently I have no real usecase to follow the HTMX Stack.
+The POC was a nice experience, but currently I have no real usecase to follow the HTMX Stack and I will continue with Leptos: https://github.com/oxide-byte/todo-leptos
